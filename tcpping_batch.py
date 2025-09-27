@@ -6,16 +6,8 @@
 """
 from tcppinglib import tcpping
 
-IPS = [
-    "13.158.164.251",
-    "13.113.53.43",
-    "54.238.36.18",
-    "3.115.240.84",
-    "52.69.254.176",
-    "18.177.177.134",
-    "52.194.72.203",
-    "54.178.245.74",
-]
+IPS = ['54.178.245.74', '54.168.62.210', '54.238.36.18', '57.180.6.213',
+ '13.158.164.251', '13.113.53.43', '18.180.94.171', '52.69.254.176']
 
 COUNT = 100
 
@@ -23,7 +15,7 @@ def main() -> None:
     for ip in IPS:
         try:
             res = tcpping(ip, port=443, count=COUNT, interval=0.1)
-            print(f"{ip:<15}  avg = {res.avg_rtt:7.3f} ms")
+            print(f"{ip:<15},{res.min_rtt:7.3f},{res.max_rtt:7.3f},{res.avg_rtt:7.3f}")
         except Exception as e:
             print(f"{ip:<15}  测试失败: {e}")
 
